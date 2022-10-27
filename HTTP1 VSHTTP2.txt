@@ -1,0 +1,41 @@
+HTTP 1:
+Key Features of HTTP 1:
+HTTP is a top-level application protocol that exchanges information between a client computer and a local or remote web server. In this process, a client sends a text-based request to a server by calling a method like GET or POST. In response, the server sends a resource like an HTML page back to the client.
+The concept of headers both for requests (from the client machine) as well as responses (from servers) was introduced. The use of headers such as GET, POST, HEAD added extended flexibility
+none of which was possible with the earlier version.
+Version information was now included.
+It allowed a single request/response for every TCP connection.
+Status codes were used to indicate successful requests and to indicate transmission errors.
+The content-type header made it possible to send files other than plain HTML, including scripts and media.
+It was no longer required for each connection to be terminated immediately after every request was served with a response; instead, with the keep-alive header, it was possible to have persistent connections. It allowed multiple requests/responses per TCP connection.
+The Upgrade header was used to indicate a preference from the client that made it possible to switch to a more preferred protocol if found appropriate by the server.
+HTTP 1 provided support for chunk transfers that allowed streaming of content dynamically as chunks and for additional headers to be sent after the message body. This enhancement was particularly useful in cases where values of a field remained unknown until the content had been produced. For example, when the content had to be digitally signed, it was not possible to do so before the entire content gets generated.
+Other features that reinforced its stability were introduced such as:
+pipelining (the second request is sent before the response to the first is adequately served)
+content negotiation (an exchange between client and server to determine the media type, it also provides the provision to serve different versions of a resource at the same URI)
+cache control (used to specify caching policies in both requests and responses)
+
+HTTP 2:
+Key Features of HTTP 2:
+HTTP/2 enables full request and response multiplexing. In practice, this means a connection made to a web server from your browser can be used to send multiple requests and receive multiple responses.
+ This gets rid of a lot of the additional time that it takes to establish a new connection for each request.
+It introduces the concept of a server push where the server anticipates the resources that will be required by the client and pushes them prior to the client making requests.
+The client retains the authority to deny the server push; however, in most cases, this feature adds a lot of efficiency to the process.
+Introduces the concept of multiplexing that interleaves the requests and responses without head-of-line blocking and does so over a single TCP connection.
+It is a binary protocol i.e. only binary commands in the form of 0s and 1s are transmitted over the wire. 
+The binary framing layer divides the message into frames that are segregated based on their type – Data or Header. 
+This feature greatly increases efficiency in terms of security, compression and multiplexing.
+HTTP/2 uses HPACK header compression algorithm that is resilient to attacks like CRIME and utilizes static Huffman encoding.
+
+
+
+HTTP/1 vs HTTP/2: A Comparative Study
+HTTP2 is much faster and more reliable than HTTP1. HTTP1 loads a single request for every TCP connection, while HTTP2 avoids network delay by using multiplexing.
+HTTP is a network delay sensitive protocol in the sense that if there is less network delay, then the page loads faster. 
+However, an impressive increase in network bandwidth only slightly improves page load time. 
+This is key to understanding the differences in performance efficiencies between the different versions of HTTP.
+At the earlier stage of modem web pages were simple and it was the actual data transfer between the server and the client that contributed towards the largest chunk of the page load time.
+Today the actual downloading of resources from server takes a negligible portion of the total page load time due to the tremendous increase in bandwidth availability.
+It is the time taken to establish the TCP connection and making requests that impacts performance. 
+It was initially recommended to use only two connections per hostname but today most browsers use six connections per hostname. 
+When we talk about http vs http2 in terms of performance it is important to note that a lot of performance optimizations adopted by HTTP 1 introduced complexities in terms of developmental efforts as well as network congestion that HTTP/2 attempts to address.
